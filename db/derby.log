@@ -12,3 +12,5 @@ os.arch=x86
 os.version=10.0
 derby.system.home=C:\Users\isaia\Desktop\Java\Accounting\db
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Apr 30 00:43:17 SGT 2018: Shutting down Derby engine
