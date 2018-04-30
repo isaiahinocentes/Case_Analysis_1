@@ -22,7 +22,7 @@ public class Tables extends Database{
                 + "id INT PRIMARY KEY,"
                 + "name VARCHAR(12))";
         
-        if(execute(sql)){
+        if(createTableQry(sql)){
             System.out.println("Created Students table...");
         }
     }
