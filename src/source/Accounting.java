@@ -31,7 +31,11 @@ public class Accounting extends Database{
             //    System.out.println("Success Insert!");
             
             //tbl.getQuery("DEMO");
-            tbl.getQuery("DEMO","ID","=","1");
+            
+            if(conn == null){ conn = getDbConnection(); } 
+            String sql = "SELECT * FROM STUDENTS WHERE LAST_NAME='Inocentes P'";
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
             while(rs.next()){
                 System.out.println("Get Result: "+rs.getString(2));
             }
