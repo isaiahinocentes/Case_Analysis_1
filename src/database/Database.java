@@ -114,6 +114,7 @@ public class Database {
         String sql = "SELECT * FROM "+table+" WHERE "
                 +column+optr+key;
         
+        System.out.println(sql);
         if(conn == null){ conn = getDbConnection(); } 
         
         try{
@@ -170,6 +171,26 @@ public class Database {
         return false;
     }
     
+     public static boolean update(String table, String values, String id){
+        
+        String sql = "UPDATE "+table+" SET "
+                +values;
+        
+        if(conn == null){ conn = getDbConnection(); } 
+        
+        try {
+            st = conn.createStatement();
+            st.execute(sql);
+            return true;
+        } catch (SQLException ex) {
+            //Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: "+ex.getMessage()+"\n"+sql);
+        }
+        error_message = "Unable to execute Query: "+sql;
+        return false;
+    }
+    
+     
     /**
      * get current timestamp
      * @return 

@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -17,7 +18,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import libraries.StringFormatting;
+import static models.Student.computeBalance;
 import static models.Student.validateStudent;
+import static models.Student.validateEdit;
 
 /**
  *
@@ -272,7 +276,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(66, Short.MAX_VALUE))))
+                        .addContainerGap(255, Short.MAX_VALUE))))
         );
         panelAddStudentLayout.setVerticalGroup(
             panelAddStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,7 +367,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
             .addGroup(panelNavViewStudentsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelNavViewStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelNavViewStudentsLayout.createSequentialGroup()
                         .addGroup(panelNavViewStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,12 +400,12 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
             .addGroup(panelViewStudentLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
                     .addGroup(panelViewStudentLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(panelNavViewStudents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelNavViewStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1)
                         .addGap(18, 18, 18)))
                 .addContainerGap())
         );
@@ -454,6 +458,11 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
 
         btnSaveEditStudent.setText("Save");
         btnSaveEditStudent.setEnabled(false);
+        btnSaveEditStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveEditStudentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelEditStudentLayout = new javax.swing.GroupLayout(panelEditStudent);
         panelEditStudent.setLayout(panelEditStudentLayout);
@@ -604,24 +613,73 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
     private void btn_EditFillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditFillActionPerformed
         //Query ID
         if(getQuery("Students", "id", "=", "'"+edit_txtId.getText()+"'")){
-           if(rs != null){
-               try {
-                   edit_txtFirstName.setText(rs.getString("first_name"));
-                   /*edit_txtLastName.setText(rs.getString("first_name"));
-                   edit_txtFirstName.setText(rs.getString("first_name"));
-                   edit_txtFirstName.setText(rs.getString("first_name"));
-                   edit_txtFirstName.setText(rs.getString("first_name"));
-                   edit_txtFirstName.setText(rs.getString("first_name"));
-                   edit_txtFirstName.setText(rs.getString("first_name"));*/
-                   
-               } catch (SQLException ex) {
-                   Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-               }
-           }
+            try {
+                if(rs.next()){
+                    try {
+                        edit_txtFirstName.setText(rs.getString("first_name"));
+                        edit_txtLastName.setText(rs.getString("last_name"));
+                        if("Male".equals(rs.getString("gender"))){
+                            edit_cbxGender.setSelectedIndex(0);
+                        } else {
+                            edit_cbxGender.setSelectedIndex(1);
+                        }
+                        
+                        edit_txtContact.setText(rs.getString("contact"));
+                        edit_txtAddress.setText(rs.getString("address"));
+                        edit_spNew.setValue(Integer.valueOf(rs.getString("num_new")));
+                        edit_spRepeated.setValue(Integer.valueOf(rs.getString("num_repeat")));
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                btnSaveEditStudent.setEnabled(true);
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } else {
+            btnSaveEditStudent.setEnabled(false);
             System.out.println("No Such Student");
         }
     }//GEN-LAST:event_btn_EditFillActionPerformed
+
+    private void btnSaveEditStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditStudentActionPerformed
+         if(validateEdit(
+                (int)spRepeated.getValue(),
+                (int)spNew.getValue())){
+            
+             try {
+                 String balance = computeBalance((int)spRepeated.getValue(),
+                         (int)spNew.getValue());
+                 
+                 ArrayList<String> str = new ArrayList<>();
+                 str.add(edit_txtId.getText());
+                 str.add(edit_txtFirstName.getText());
+                 str.add(edit_txtLastName.getText());
+                 str.add(String.valueOf(edit_cbxGender.getSelectedItem()));
+                 str.add(edit_txtAddress.getText());
+                 str.add(String.valueOf(edit_spNew.getValue()));
+                 str.add(String.valueOf(edit_spRepeated.getValue()));
+                 str.add(balance);
+                 str.add(rs.getString("created_at"));
+                 str.add(getTimestampt());
+                 str.add(rs.getString("deleted_at"));
+                 String values = StringFormatting.string2SQLValues(str);
+                 //insertQuery(Student, values)
+                 
+                //Success Saving
+                 Dialog = new JOptionPane("Record Saved!", JOptionPane.PLAIN_MESSAGE);
+                 Dialog.setVisible(true);
+                 clearFields(this.panelAddStudent.getComponents());
+             } catch (SQLException ex) {
+                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        } else {
+            Dialog = new JOptionPane("Unable to Save Record: "+error_message, JOptionPane.ERROR_MESSAGE);
+            Dialog.setVisible(true);
+        }
+    }//GEN-LAST:event_btnSaveEditStudentActionPerformed
     
     /**
      * Catch any Button Navigation
@@ -632,16 +690,21 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         this.panelMain.removeAll();
         this.panelMain.repaint();
         this.panelMain.revalidate();
-        
-         if(e.getSource() == this.btnAddStudent){
-             
+
+        //ADD STUDENTS
+        if(e.getSource() == this.btnAddStudent){
             this.panelMain.add(this.panelAddStudent);
-            
-        } else if(e.getSource() == this.btnViewStudent) {
+        }
+        
+        //VIEW STUDENTS RECORD 
+        else if(e.getSource() == this.btnViewStudent) {
             DefaultTableModel model = (DefaultTableModel) tblStudents.getModel();
+            model.setRowCount(0);
             this.panelMain.add(this.panelViewStudent);
             if(getQuery("Students")){
                 try {
+                    
+                    System.out.println("----------");
                     while(rs.next()){
                         System.out.println(rs.getInt(1)+" "+rs.getString("first_name")+" "+rs.getString("last_name"));
                         Object []row = {
@@ -657,15 +720,16 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                     tblStudents.setModel(model);
                     tblStudents.setVisible(true);
                 } catch (SQLException ex) {
-                    //Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                    Dialog = new JOptionPane("Error Fetching: "+error_message, JOptionPane.ERROR_MESSAGE);
-                    Dialog.setVisible(true);
+                    
                 }
             } else {
                 Dialog = new JOptionPane("Error Fetching: "+error_message, JOptionPane.ERROR_MESSAGE);
                 Dialog.setVisible(true);
             }
-        } else if(e.getSource() == btnEditRecordsStudent){
+        }
+        
+        //EDIT STUDENT RECORDS
+        else if(e.getSource() == btnEditRecordsStudent){
             this.panelMain.add(this.panelEditStudent);
         }
         

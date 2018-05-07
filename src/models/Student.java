@@ -106,6 +106,41 @@ public class Student extends Database{
     }
     
     
+    public static boolean validateEdit(
+        int num_repeat, int num_new){
+        
+        if(num_repeat + num_new > 6){
+            error_message = "More than 6 Modules";
+            return false;
+        }
+        
+        if(num_repeat > 2){
+            if(num_new != 0){
+                error_message = "Repeated modules is more than 2. You can't take new modules";
+                return false;
+            }
+        }
+        
+        if(num_repeat + num_new < 0){
+            error_message = "Modules are less than minumum.";
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public static String computeBalance(
+        int num_repeat, int num_new){
+        
+        double newModCost = 1;
+        double repModCost = 1;
+        
+        double balance = (num_new * newModCost) + (num_repeat * repModCost);
+       
+        return String.valueOf(balance);
+    }
+    
+    
     
     
 }
