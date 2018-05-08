@@ -20,10 +20,10 @@ public class Tables extends Database{
     }
     
     public void createTables(){
-        now = getTimestampt();
-        create_students_table();
-        now = getTimestampt();
-        create_users_table();
+//        now = getTimestampt();
+//        create_students_table();
+//        now = getTimestampt();
+//        create_users_table();
         now = getTimestampt();
         create_teachers_table();
     }
@@ -41,8 +41,7 @@ public class Tables extends Database{
                 "num_repeat VARCHAR(2),"+
                 "balance VARCHAR(6),"+
                 "created_at VARCHAR(20) DEFAULT NULL,"+
-                "updated_at VARCHAR(20) DEFAULT NULL,"+
-                "deleted_at VARCHAR(20) DEFAULT NULL"+
+                "updated_at VARCHAR(20) DEFAULT NULL"+
                 ")";
         if(createTableQuery(sql)){
             System.out.println("Created Students table...");
@@ -61,7 +60,6 @@ public class Tables extends Database{
                 + "'2',"
                 + "'1000',"
                 + "'"+now+"',"
-                + "'',"
                 + "''"
                 + ")");
         
@@ -76,7 +74,6 @@ public class Tables extends Database{
                 + "'2',"
                 + "'1210',"
                 + "'"+now+"',"
-                + "'',"
                 + "''"
                 + ")");
           
@@ -91,7 +88,6 @@ public class Tables extends Database{
                 + "'1',"
                 + "'1230',"
                 + "'"+now+"',"
-                + "'',"
                 + "''"
                 + ")");
         
@@ -121,8 +117,7 @@ public class Tables extends Database{
                 "desg VARCHAR(50),"+
                 "hours VARCHAR(2),"+
                 "created_at VARCHAR(20) DEFAULT NULL,"+
-                "updated_at VARCHAR(20) DEFAULT NULL,"+
-                "deleted_at VARCHAR(20) DEFAULT NULL"+
+                "updated_at VARCHAR(20) DEFAULT NULL"+
                 ")";
         if(createTableQuery(sql)){
             System.out.println("Created Teachers table...");
@@ -142,7 +137,6 @@ public class Tables extends Database{
                 + "'Head of Faculty',"
                 + "'8',"
                 + "'"+now+"',"
-                + "'',"
                 + "''"
                 + ")");
         
@@ -157,7 +151,6 @@ public class Tables extends Database{
                 + "'Coordinator',"
                 + "'13',"
                 + "'"+now+"',"
-                + "'',"
                 + "''"
                 + ")");
         
@@ -172,7 +165,6 @@ public class Tables extends Database{
                 + "'Lecturer',"
                 + "'18',"
                 + "'"+now+"',"
-                + "'',"
                 + "''"
                 + ")");
     }

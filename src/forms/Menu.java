@@ -22,6 +22,8 @@ import libraries.StringFormatting;
 import static models.Student.computeBalance;
 import static models.Student.validateStudent;
 import static models.Student.validateEdit;
+import models.Teacher;
+import static models.Teacher.getHours;
 
 /**
  *
@@ -108,6 +110,27 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         edit_spNew = new javax.swing.JSpinner();
         btnSaveEditStudent = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
+        panelAddTeacher = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        txtFirstNameTeacher = new javax.swing.JTextField();
+        txtLastNameTeacher = new javax.swing.JTextField();
+        cbxGenderTeacher = new javax.swing.JComboBox<>();
+        txtContactTeacher = new javax.swing.JTextField();
+        txtAddressTeacher = new javax.swing.JTextField();
+        cbxDeptTeacher = new javax.swing.JComboBox<>();
+        cbxDesgTeacher = new javax.swing.JComboBox<>();
+        btnSaveTeacher = new javax.swing.JButton();
+        panelViewTeacher = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblTeachers = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -490,8 +513,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                                     .addGroup(panelEditStudentLayout.createSequentialGroup()
                                         .addComponent(jLabel14)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(edit_cbxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(139, 139, 139))
+                                        .addComponent(edit_cbxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(panelEditStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelEditStudentLayout.createSequentialGroup()
                                             .addGroup(panelEditStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -566,6 +588,189 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         );
 
         panelMain.add(panelEditStudent, "card2");
+
+        jLabel21.setText("Name:");
+
+        jLabel22.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("Add Teacher");
+
+        jLabel23.setText("Gender:");
+
+        jLabel24.setText("Contact Number:");
+
+        jLabel25.setText("Address:");
+
+        jLabel26.setText("Department:");
+
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel27.setText("Designation:");
+
+        txtFirstNameTeacher.setToolTipText("First Name");
+
+        txtLastNameTeacher.setToolTipText("Last Name");
+
+        cbxGenderTeacher.setMaximumRowCount(2);
+        cbxGenderTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+
+        cbxDeptTeacher.setMaximumRowCount(2);
+        cbxDeptTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Business", "Computing" }));
+
+        cbxDesgTeacher.setMaximumRowCount(3);
+        cbxDesgTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Head of Faculty", "Coordinator", "Lecturer" }));
+
+        btnSaveTeacher.setText("Save");
+        btnSaveTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveTeacherActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelAddTeacherLayout = new javax.swing.GroupLayout(panelAddTeacher);
+        panelAddTeacher.setLayout(panelAddTeacherLayout);
+        panelAddTeacherLayout.setHorizontalGroup(
+            panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator6)
+                    .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtContactTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(200, 531, Short.MAX_VALUE))
+                    .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                        .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                                .addComponent(jLabel23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbxGenderTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAddressTeacher))
+                    .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                        .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtFirstNameTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtLastNameTeacher))
+                            .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                                .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                                        .addComponent(jLabel26)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cbxDeptTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                                        .addComponent(jLabel27)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnSaveTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                                                .addComponent(cbxDesgTeacher, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(236, 236, 236)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(6, 6, 6))))
+        );
+        panelAddTeacherLayout.setVerticalGroup(
+            panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAddTeacherLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFirstNameTeacher)
+                        .addComponent(txtLastNameTeacher)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(cbxGenderTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(txtContactTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(txtAddressTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(cbxDeptTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(cbxDesgTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnSaveTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        panelMain.add(panelAddTeacher, "card2");
+
+        jLabel28.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("View Teachers");
+
+        tblTeachers.setAutoCreateRowSorter(true);
+        tblTeachers.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tblTeachers.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblTeachers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Name", "Gender", "Contact", "Address", "Department", "Designation", "Hours"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblTeachers);
+
+        javax.swing.GroupLayout panelViewTeacherLayout = new javax.swing.GroupLayout(panelViewTeacher);
+        panelViewTeacher.setLayout(panelViewTeacherLayout);
+        panelViewTeacherLayout.setHorizontalGroup(
+            panelViewTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelViewTeacherLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelViewTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
+        );
+        panelViewTeacherLayout.setVerticalGroup(
+            panelViewTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelViewTeacherLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelMain.add(panelViewTeacher, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -658,20 +863,24 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                  str.add(edit_txtFirstName.getText());
                  str.add(edit_txtLastName.getText());
                  str.add(String.valueOf(edit_cbxGender.getSelectedItem()));
+                 str.add(edit_txtContact.getText());
                  str.add(edit_txtAddress.getText());
                  str.add(String.valueOf(edit_spNew.getValue()));
                  str.add(String.valueOf(edit_spRepeated.getValue()));
                  str.add(balance);
                  str.add(rs.getString("created_at"));
                  str.add(getTimestampt());
-                 str.add(rs.getString("deleted_at"));
-                 String values = StringFormatting.string2SQLValues(str);
+                 //String values = StringFormatting.string2SQLValues(str);
                  //insertQuery(Student, values)
+                 if(updateQuery("Students", str)){
+                    //Success Saving
+                     Dialog = new JOptionPane("Record Saved!", JOptionPane.PLAIN_MESSAGE);
+                     Dialog.setVisible(true);
+                     clearFields(this.panelAddStudent.getComponents());
+                 } else {
+                     System.out.println("Cant update record.");
+                 }
                  
-                //Success Saving
-                 Dialog = new JOptionPane("Record Saved!", JOptionPane.PLAIN_MESSAGE);
-                 Dialog.setVisible(true);
-                 clearFields(this.panelAddStudent.getComponents());
              } catch (SQLException ex) {
                  Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
              }
@@ -680,6 +889,31 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
             Dialog.setVisible(true);
         }
     }//GEN-LAST:event_btnSaveEditStudentActionPerformed
+
+    private void btnSaveTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveTeacherActionPerformed
+        ArrayList<String> str = new ArrayList<>();
+        str.add(String.valueOf(Teacher.getId()));
+        str.add(txtFirstNameTeacher.getText());
+        str.add(txtLastNameTeacher.getText());
+        str.add((String)cbxGenderTeacher.getSelectedItem());
+        str.add(txtContactTeacher.getText());
+        str.add(txtAddressTeacher.getText());
+        str.add((String)cbxDeptTeacher.getSelectedItem());
+        str.add((String)cbxDesgTeacher.getSelectedItem());
+        str.add(Teacher.getHours((String)cbxDesgTeacher.getSelectedItem()));
+        str.add(getTimestampt());
+        str.add(null);
+        try {
+            if(insertQuery("Teachers", str)){
+                System.out.println("Success Insert!");
+            } else {
+                throw new SQLException();
+            }
+        } catch (SQLException ex) {
+            System.out.println("Can't Insert Data!");
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSaveTeacherActionPerformed
     
     /**
      * Catch any Button Navigation
@@ -691,6 +925,13 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         this.panelMain.repaint();
         this.panelMain.revalidate();
 
+        this.btnSaveEditStudent.setEnabled(false);
+        
+        clearFields(this.panelEditStudent.getComponents());
+        clearFields(this.panelAddStudent.getComponents());
+        clearFields(this.panelAddTeacher.getComponents());
+        //clearFields(this.panelEditTeacher.getComponents());
+        
         //ADD STUDENTS
         if(e.getSource() == this.btnAddStudent){
             this.panelMain.add(this.panelAddStudent);
@@ -731,6 +972,41 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         //EDIT STUDENT RECORDS
         else if(e.getSource() == btnEditRecordsStudent){
             this.panelMain.add(this.panelEditStudent);
+        }
+        
+        //Add Teacher
+        else if(e.getSource() == btnAddFaculty){
+            this.panelMain.add(this.panelAddTeacher);
+        }
+        
+        //VIEW TEACHER
+        else if(e.getSource() == btnViewFaculty){
+            DefaultTableModel model = (DefaultTableModel) tblTeachers.getModel();
+            model.setRowCount(0);
+            this.panelMain.add(this.panelViewTeacher);
+            if(getQuery("Teachers")){
+                try {
+                    System.out.println("----------");
+                    while(rs.next()){
+                        System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
+                        Object []row = {
+                            rs.getString("id"),
+                            rs.getString("first_name")+" "+rs.getString("last_name"),
+                            rs.getString("gender"),
+                            rs.getString("contact"),
+                            rs.getString("address"),
+                            rs.getString("dept"),
+                            rs.getString("desg"),
+                            rs.getString("hours"),
+                        };
+                        model.addRow(row);
+                    }
+                    tblTeachers.setModel(model);
+                    tblTeachers.setVisible(true);
+                } catch (SQLException ex) {
+                    
+                }
+            }
         }
         
         this.panelMain.repaint();
@@ -794,10 +1070,14 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JButton btnPayment;
     private javax.swing.JButton btnSaveEditStudent;
     private javax.swing.JButton btnSaveStudent;
+    private javax.swing.JButton btnSaveTeacher;
     private javax.swing.JButton btnViewFaculty;
     private javax.swing.JButton btnViewStudent;
     private javax.swing.JButton btn_EditFill;
+    private javax.swing.JComboBox<String> cbxDeptTeacher;
+    private javax.swing.JComboBox<String> cbxDesgTeacher;
     private javax.swing.JComboBox<String> cbxGender;
+    private javax.swing.JComboBox<String> cbxGenderTeacher;
     private javax.swing.JComboBox<String> edit_cbxGender;
     private javax.swing.JSpinner edit_spNew;
     private javax.swing.JSpinner edit_spRepeated;
@@ -821,6 +1101,14 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -829,25 +1117,34 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JPanel panelAddStudent;
+    private javax.swing.JPanel panelAddTeacher;
     private javax.swing.JPanel panelEditStudent;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelNavViewStudents;
     private javax.swing.JPanel panelNavigation;
     private javax.swing.JPanel panelViewStudent;
+    private javax.swing.JPanel panelViewTeacher;
     private javax.swing.JSeparator separator;
     private javax.swing.JSpinner spNew;
     private javax.swing.JSpinner spRepeated;
     private javax.swing.JTable tblStudents;
+    private javax.swing.JTable tblTeachers;
     private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtAddressTeacher;
     private javax.swing.JTextField txtContact;
+    private javax.swing.JTextField txtContactTeacher;
     private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtFirstNameTeacher;
     private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtLastNameTeacher;
     // End of variables declaration//GEN-END:variables
 
 }

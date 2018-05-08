@@ -2,19 +2,24 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.Student;
+import models.Teacher;
 
 public class Database {
     
     public static Connection conn = null;
     public static Statement st = null;
+    public static PreparedStatement pst = null;
     public static ResultSet rs = null;
     public static String error_message = null;
     
@@ -171,22 +176,42 @@ public class Database {
         return false;
     }
     
-     public static boolean update(String table, String values, String id){
+    public static boolean insertQuery(String table, ArrayList<String> values) throws SQLException{
+       
+        if(conn == null){ conn = getDbConnection(); } 
+        if(table.equals("Teachers")){
+            pst = conn.prepareStatement(Teacher.insertSQL);
+        } else if(table.equals("Students")){
+            pst = conn.prepareStatement(Student.updateSQL);
+        }
         
-        String sql = "UPDATE "+table+" SET "
-                +values;
+        for(int i = 0; i < values.size(); i++){
+            System.out.println(i+" = "+values.get(i));
+            pst.setString(i+1, values.get(i));
+        }
+        
+        return pst.executeUpdate() == 1;    
+    }
+    
+    public static boolean updateQuery(String table, ArrayList<String> values){
         
         if(conn == null){ conn = getDbConnection(); } 
         
         try {
-            st = conn.createStatement();
-            st.execute(sql);
-            return true;
+            pst = conn.prepareStatement(Student.updateSQL);
+            for(int i = 0; i < values.size(); i++){
+                if(i == 0) pst.setString(11, values.get(i));
+                else pst.setString(i, values.get(i));
+                System.out.println(i+" = "+values.get(i));
+            }
+            if(pst.executeUpdate() == 1)
+                return true;
+            
         } catch (SQLException ex) {
             //Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error: "+ex.getMessage()+"\n"+sql);
+            System.out.println("Error: "+ex.getMessage()+"\n"+Student.updateSQL);
         }
-        error_message = "Unable to execute Query: "+sql;
+        error_message = "Unable to execute Query: "+Student.updateSQL;
         return false;
     }
     

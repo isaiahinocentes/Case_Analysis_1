@@ -140,7 +140,18 @@ public class Student extends Database{
         return String.valueOf(balance);
     }
     
-    
-    
-    
+    public static String updateSQL = 
+            "UPDATE STUDENTS "
+            + "SET "
+                + "FIRST_NAME=?,"   //1
+                + "LAST_NAME=?,"    //2
+                + "GENDER=?,"       //3
+                + "CONTACT=?,"      //4
+                + "ADDRESS=?,"      //5
+                + "NUM_NEW=?,"      //6
+                + "NUM_REPEAT=?,"   //7
+                + "BALANCE=?,"      //8
+                + "CREATED_AT=?,"   //9
+                + "UPDATED_AT=? "   //10
+            + "WHERE ID=?";         //11
 }
