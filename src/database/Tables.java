@@ -24,8 +24,9 @@ public class Tables extends Database{
 //        create_students_table();
 //        now = getTimestampt();
 //        create_users_table();
-        now = getTimestampt();
-        create_teachers_table();
+//        now = getTimestampt();
+//        create_teachers_table();
+        create_settings_table();
     }
     //
     private void create_students_table(){
@@ -168,4 +169,34 @@ public class Tables extends Database{
                 + "''"
                 + ")");
     }
+    
+    private void create_settings_table(){
+        
+        String sql = "CREATE TABLE Settings(" 
+                + "new_module DOUBLE,"
+                + "rep_module DOUBLE,"
+                + "ot DOUBLE,"
+                + "bs DOUBLE,"
+                + "ha DOUBLE,"
+                + "ma DOUBLE,"
+                + "ta DOUBLE"
+                + ")";
+        
+        if(createTableQuery(sql)){
+            System.out.println("Created Settings table...");
+        } else {
+            System.out.println("Unable to Create Settings table...");
+        }
+        
+        insertQuery("Settings", "("
+                + "525.00,"
+                + "110.00,"
+                + "325.00,"
+                + "1200.00,"
+                + "0.10,"
+                + "0.03,"
+                + "0.05"
+                + ")");
+    }
+    
 }

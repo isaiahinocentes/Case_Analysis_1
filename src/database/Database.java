@@ -157,6 +157,12 @@ public class Database {
         return false;
     }
    
+    /**
+     * Old
+     * @param table
+     * @param values
+     * @return 
+     */
     public static boolean insertQuery(String table, String values){
         
         String sql = "INSERT INTO "+table+" values "
@@ -198,7 +204,8 @@ public class Database {
         if(conn == null){ conn = getDbConnection(); } 
         
         try {
-            pst = conn.prepareStatement(Student.updateSQL);
+            if(table.equals("Students")) pst = conn.prepareStatement(Student.updateSQL);
+            else pst = conn.prepareStatement(Teacher.updateSQL);
             for(int i = 0; i < values.size(); i++){
                 if(i == 0) pst.setString(11, values.get(i));
                 else pst.setString(i, values.get(i));
@@ -215,7 +222,46 @@ public class Database {
         return false;
     }
     
+    public static boolean updateBalanceQuery(String table, ArrayList<String> values){
+        
+        if(conn == null){ conn = getDbConnection(); } 
+        
+        try {
+            pst = conn.prepareStatement(Student.updatePaymentSQL);
+            for(int i = 0; i < values.size(); i++){
+                if(i == 0) pst.setString(11, values.get(i));
+                else pst.setString(i, values.get(i));
+                System.out.println(i+" = "+values.get(i));
+            }
+            if(pst.executeUpdate() == 1)
+                return true;
+            
+        } catch (SQLException ex) {
+            //Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: "+ex.getMessage()+"\n"+Student.updateSQL);
+        }
+        error_message = "Unable to execute Query: "+Student.updateSQL;
+        return false;
+    }
+    
+    public static boolean deleteQuery(String table, String id) throws SQLException, SQLException{
+        String sql = "DELETE FROM "
+                + table 
+                + " WHERE id='"+id+"'";
+        if(conn == null){ conn = getDbConnection(); } 
+        return pst.execute(sql);
+    }
      
+    
+    public static void getSettings() throws SQLException{
+        if(conn == null){ conn = getDbConnection(); } 
+        pst = conn.prepareStatement("SELECT * FROM Settings");
+        if(pst.execute()){
+            rs.next();
+        } else {
+            throw new SQLException("Can't Execute SQL Statement");
+        }
+    }
     /**
      * get current timestamp
      * @return 

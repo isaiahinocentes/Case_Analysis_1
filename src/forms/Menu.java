@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -61,6 +62,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         btnAddFaculty = new javax.swing.JButton();
         btnViewFaculty = new javax.swing.JButton();
         btnEditRecordsFaculty = new javax.swing.JButton();
+        btnComputeSalary = new javax.swing.JButton();
         panelMain = new javax.swing.JPanel();
         panelAddStudent = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -99,6 +101,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
         edit_txtId = new javax.swing.JTextField();
         btn_EditFill = new javax.swing.JButton();
         edit_txtFirstName = new javax.swing.JTextField();
@@ -109,7 +112,9 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         edit_spRepeated = new javax.swing.JSpinner();
         edit_spNew = new javax.swing.JSpinner();
         btnSaveEditStudent = new javax.swing.JButton();
-        jSeparator5 = new javax.swing.JSeparator();
+        btnDeleteStudent = new javax.swing.JButton();
+        btnMakePayment = new javax.swing.JButton();
+        panelPayment = new javax.swing.JPanel();
         panelAddTeacher = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -131,6 +136,29 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         jLabel28 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTeachers = new javax.swing.JTable();
+        panelEditTeacher = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
+        edit_txtIdTeacher = new javax.swing.JTextField();
+        edit_btnFillTeacher = new javax.swing.JButton();
+        edit_txtFirstNameTeacher = new javax.swing.JTextField();
+        edit_txtLastNameTeacher = new javax.swing.JTextField();
+        edit_cbxGenderTeacher = new javax.swing.JComboBox<>();
+        edit_txtContactTeacher = new javax.swing.JTextField();
+        edit_txtAddressTeacher = new javax.swing.JTextField();
+        edit_cbxDeptTeacher = new javax.swing.JComboBox<>();
+        edit_cbxDesgTeacher = new javax.swing.JComboBox<>();
+        btnSaveEditTeacher = new javax.swing.JButton();
+        btnDeleteTeacher = new javax.swing.JButton();
+        btnCalculateSalary = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,6 +185,9 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         btnViewFaculty.setText("View Records");
 
         btnEditRecordsFaculty.setText("Edit Records");
+
+        btnComputeSalary.setFont(new java.awt.Font("sansserif", 0, 10)); // NOI18N
+        btnComputeSalary.setText("Compute Salary");
 
         javax.swing.GroupLayout panelNavigationLayout = new javax.swing.GroupLayout(panelNavigation);
         panelNavigation.setLayout(panelNavigationLayout);
@@ -185,40 +216,46 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNavigationLayout.createSequentialGroup()
                         .addComponent(btnAddStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(panelNavigationLayout.createSequentialGroup()
-                        .addComponent(btnEditRecordsFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNavigationLayout.createSequentialGroup()
+                        .addGroup(panelNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnComputeSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditRecordsFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelNavigationLayout.setVerticalGroup(
             panelNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNavigationLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(btnAddStudent)
-                .addGap(18, 18, 18)
-                .addComponent(btnViewStudent)
-                .addGap(12, 12, 12)
-                .addComponent(btnEditRecordsStudent)
-                .addGap(18, 18, 18)
-                .addComponent(btnPayment)
-                .addGap(18, 18, 18)
-                .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(btnAddFaculty)
-                .addGap(18, 18, 18)
-                .addComponent(btnViewFaculty)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditRecordsFaculty)
-                .addGap(10, 10, 10))
             .addGroup(panelNavigationLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSeparator1)
-                .addContainerGap())
+                .addGroup(panelNavigationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNavigationLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddStudent)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnViewStudent)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnEditRecordsStudent)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPayment)
+                        .addGap(18, 18, 18)
+                        .addComponent(separator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddFaculty)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnViewFaculty)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditRecordsFaculty)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnComputeSalary)
+                        .addGap(10, 10, 10))
+                    .addGroup(panelNavigationLayout.createSequentialGroup()
+                        .addComponent(jSeparator1)
+                        .addContainerGap())))
         );
 
         panelMain.setLayout(new java.awt.CardLayout());
@@ -299,7 +336,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(255, Short.MAX_VALUE))))
+                        .addContainerGap(323, Short.MAX_VALUE))))
         );
         panelAddStudentLayout.setVerticalGroup(
             panelAddStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,7 +460,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
             .addGroup(panelViewStudentLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
                     .addGroup(panelViewStudentLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(panelNavViewStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -487,6 +524,20 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
             }
         });
 
+        btnDeleteStudent.setText("DELETE");
+        btnDeleteStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteStudentActionPerformed(evt);
+            }
+        });
+
+        btnMakePayment.setText("Make Payment");
+        btnMakePayment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMakePaymentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelEditStudentLayout = new javax.swing.GroupLayout(panelEditStudent);
         panelEditStudent.setLayout(panelEditStudentLayout);
         panelEditStudentLayout.setHorizontalGroup(
@@ -496,7 +547,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                 .addGroup(panelEditStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelEditStudentLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(panelEditStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelEditStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(panelEditStudentLayout.createSequentialGroup()
                                 .addGroup(panelEditStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(panelEditStudentLayout.createSequentialGroup()
@@ -504,7 +555,11 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                                         .addGap(18, 18, 18)
                                         .addComponent(edit_txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn_EditFill, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btn_EditFill, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnMakePayment)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                                        .addComponent(btnDeleteStudent))
                                     .addComponent(jLabel12)
                                     .addGroup(panelEditStudentLayout.createSequentialGroup()
                                         .addComponent(jLabel15)
@@ -530,7 +585,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(edit_txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
                             .addGroup(panelEditStudentLayout.createSequentialGroup()
                                 .addComponent(edit_txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -539,7 +594,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditStudentLayout.createSequentialGroup()
                         .addGroup(panelEditStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator4)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                             .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap())))
         );
@@ -554,7 +609,9 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                 .addGroup(panelEditStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(edit_txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_EditFill))
+                    .addComponent(btn_EditFill)
+                    .addComponent(btnDeleteStudent)
+                    .addComponent(btnMakePayment))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -588,6 +645,19 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         );
 
         panelMain.add(panelEditStudent, "card2");
+
+        javax.swing.GroupLayout panelPaymentLayout = new javax.swing.GroupLayout(panelPayment);
+        panelPayment.setLayout(panelPaymentLayout);
+        panelPaymentLayout.setHorizontalGroup(
+            panelPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 575, Short.MAX_VALUE)
+        );
+        panelPaymentLayout.setVerticalGroup(
+            panelPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 389, Short.MAX_VALUE)
+        );
+
+        panelMain.add(panelPayment, "card8");
 
         jLabel21.setText("Name:");
 
@@ -638,7 +708,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                         .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtContactTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(200, 531, Short.MAX_VALUE))
+                        .addGap(200, 599, Short.MAX_VALUE))
                     .addGroup(panelAddTeacherLayout.createSequentialGroup()
                         .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -685,11 +755,11 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtFirstNameTeacher)
-                        .addComponent(txtLastNameTeacher)))
+                        .addComponent(txtLastNameTeacher))
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelAddTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
@@ -756,7 +826,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
             .addGroup(panelViewTeacherLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelViewTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -771,6 +841,174 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         );
 
         panelMain.add(panelViewTeacher, "card2");
+
+        jLabel37.setText("Name:");
+
+        jLabel38.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel38.setText("Edit Teacher");
+
+        jLabel39.setText("Gender:");
+
+        jLabel40.setText("Contact Number:");
+
+        jLabel41.setText("Address:");
+
+        jLabel42.setText("Department:");
+
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel43.setText("Designation:");
+
+        jLabel29.setText("ID:");
+
+        edit_btnFillTeacher.setText("Fill");
+        edit_btnFillTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_btnFillTeacherActionPerformed(evt);
+            }
+        });
+
+        edit_txtFirstNameTeacher.setToolTipText("First Name");
+
+        edit_txtLastNameTeacher.setToolTipText("Last Name");
+
+        edit_cbxGenderTeacher.setMaximumRowCount(2);
+        edit_cbxGenderTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+
+        edit_cbxDeptTeacher.setMaximumRowCount(2);
+        edit_cbxDeptTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Business", "Computing" }));
+
+        edit_cbxDesgTeacher.setMaximumRowCount(3);
+        edit_cbxDesgTeacher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Head of Faculty", "Coordinator", "Lecturer" }));
+
+        btnSaveEditTeacher.setText("Save");
+        btnSaveEditTeacher.setEnabled(false);
+        btnSaveEditTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveEditTeacherActionPerformed(evt);
+            }
+        });
+
+        btnDeleteTeacher.setText("DELETE");
+        btnDeleteTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteTeacherActionPerformed(evt);
+            }
+        });
+
+        btnCalculateSalary.setText("Calculate Salary");
+        btnCalculateSalary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalculateSalaryActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelEditTeacherLayout = new javax.swing.GroupLayout(panelEditTeacher);
+        panelEditTeacher.setLayout(panelEditTeacherLayout);
+        panelEditTeacherLayout.setHorizontalGroup(
+            panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator9)
+                            .addComponent(jSeparator7)
+                            .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(edit_txtIdTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(edit_btnFillTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCalculateSalary)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDeleteTeacher))
+                            .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                                .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                                        .addComponent(jLabel42)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(edit_cbxDeptTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                                        .addComponent(jLabel43)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnSaveEditTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(edit_cbxDesgTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                                        .addComponent(jLabel40)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(edit_txtContactTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                                        .addComponent(jLabel39)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(edit_cbxGenderTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                                            .addComponent(jLabel37)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(edit_txtFirstNameTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(edit_txtLastNameTeacher))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelEditTeacherLayout.createSequentialGroup()
+                                            .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(edit_txtAddressTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        panelEditTeacherLayout.setVerticalGroup(
+            panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEditTeacherLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(edit_txtIdTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edit_btnFillTeacher)
+                    .addComponent(btnDeleteTeacher)
+                    .addComponent(btnCalculateSalary))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(edit_txtFirstNameTeacher)
+                        .addComponent(edit_txtLastNameTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(edit_cbxGenderTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(edit_txtContactTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(edit_txtAddressTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(edit_cbxDeptTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEditTeacherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(edit_cbxDesgTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnSaveEditTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        panelMain.add(panelEditTeacher, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -797,21 +1035,25 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveStudentActionPerformed
-        if(validateStudent(
-                txtFirstName.getText(), txtLastName.getText(),
-                cbxGender.getItemAt(cbxGender.getSelectedIndex()),
-                txtContact.getText(),
-                txtAddress.getText(),
-                (int)spRepeated.getValue(),
-                (int)spNew.getValue(),
-                0)){
-            //Success Saving
-            Dialog = new JOptionPane("Record Saved!", JOptionPane.PLAIN_MESSAGE);
-            Dialog.setVisible(true);
-            clearFields(this.panelAddStudent.getComponents());
-        } else {
-            Dialog = new JOptionPane("Unable to Save Record: "+error_message, JOptionPane.ERROR_MESSAGE);
-            Dialog.setVisible(true);
+        try {
+            if(validateStudent(
+                    txtFirstName.getText(), txtLastName.getText(),
+                    cbxGender.getItemAt(cbxGender.getSelectedIndex()),
+                    txtContact.getText(),
+                    txtAddress.getText(),
+                    (int)spRepeated.getValue(),
+                    (int)spNew.getValue(),
+                    0)){
+                //Success Saving
+                Dialog = new JOptionPane("Record Saved!", JOptionPane.PLAIN_MESSAGE);
+                Dialog.setVisible(true);
+                clearFields(this.panelAddStudent.getComponents());
+            } else {
+                Dialog = new JOptionPane("Unable to Save Record: "+error_message, JOptionPane.ERROR_MESSAGE);
+                Dialog.setVisible(true);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(panelAddStudent, ex.getMessage());
         }
     }//GEN-LAST:event_btnSaveStudentActionPerformed
 
@@ -838,6 +1080,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
                     }
                 }
                 btnSaveEditStudent.setEnabled(true);
+                btnMakePayment.setEnabled(true);
                 
             } catch (SQLException ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
@@ -914,6 +1157,163 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSaveTeacherActionPerformed
+
+    private void btnSaveEditTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditTeacherActionPerformed
+         if(Teacher.validate()){
+             try {
+                 ArrayList<String> str = new ArrayList<>();
+                 str.add(edit_txtFirstNameTeacher.getText());
+                 str.add(edit_txtLastNameTeacher.getText());
+                 str.add(String.valueOf(edit_cbxGenderTeacher.getSelectedItem()));
+                 str.add(edit_txtContactTeacher.getText());
+                 str.add(edit_txtAddressTeacher.getText());
+                 str.add(String.valueOf(cbxDeptTeacher.getSelectedItem()));
+                 str.add(String.valueOf(cbxDesgTeacher.getSelectedItem()));
+                 str.add(Teacher.getHours(String.valueOf(cbxDesgTeacher.getSelectedItem())));
+                 str.add(rs.getString("created_at"));
+                 str.add(getTimestampt());
+                 str.add(edit_txtIdTeacher.getText());
+                 
+                 if(updateQuery("Teachers", str)){
+                    //Success Saving
+                     Dialog = new JOptionPane("Record Saved!", JOptionPane.PLAIN_MESSAGE);
+                     Dialog.setVisible(true);
+                     clearFields(this.panelEditTeacher.getComponents());
+                 } else {
+                     System.out.println("Cant update record.");
+                 }
+                 
+             } catch (SQLException ex) {
+                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        } else {
+            Dialog = new JOptionPane("Unable to Save Record: "+error_message, JOptionPane.ERROR_MESSAGE);
+            Dialog.setVisible(true);
+        }
+    }//GEN-LAST:event_btnSaveEditTeacherActionPerformed
+
+    private void edit_btnFillTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnFillTeacherActionPerformed
+        //Query ID
+        if(getQuery("Teachers", "id", "=", "'"+edit_txtIdTeacher.getText()+"'")){
+            try {
+                if(rs.next()){
+                    try {
+                        edit_txtFirstNameTeacher.setText(rs.getString("first_name"));
+                        edit_txtLastNameTeacher.setText(rs.getString("last_name"));
+                        if("Male".equals(rs.getString("gender"))){
+                            edit_cbxGenderTeacher.setSelectedIndex(0);
+                        } else {
+                            edit_cbxGenderTeacher.setSelectedIndex(1);
+                        }
+                        
+                        edit_txtContactTeacher.setText(rs.getString("contact"));
+                        edit_txtAddressTeacher.setText(rs.getString("address"));
+                        
+                        //Business, Computing
+                        if("Business".equals(rs.getString("dept"))){
+                            edit_cbxDeptTeacher.setSelectedIndex(0);
+                        } else {
+                            edit_cbxDeptTeacher.setSelectedIndex(1);
+                        }
+                        
+                        //Head of Faculty, Coordinator, Lecturer
+                        if("Head of Faculty".equals(rs.getString("desg"))){
+                            edit_cbxDeptTeacher.setSelectedIndex(0);
+                        } else if("Head of Faculty".equals(rs.getString("desg"))){
+                            edit_cbxDeptTeacher.setSelectedIndex(1);
+                        } else {
+                            edit_cbxDeptTeacher.setSelectedIndex(2);
+                        }
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                btnSaveEditTeacher.setEnabled(true);
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } else {
+            btnSaveEditStudent.setEnabled(false);
+            System.out.println("No Such Student");
+        }
+    }//GEN-LAST:event_edit_btnFillTeacherActionPerformed
+
+    private void btnDeleteTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTeacherActionPerformed
+        try {
+            String id = edit_txtIdTeacher.getText();
+            if(deleteQuery("Teachers", id)){
+                System.out.println("Success Delete: "+id);
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_btnDeleteTeacherActionPerformed
+
+    private void btnDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteStudentActionPerformed
+        try {
+            String id = edit_txtId.getText();
+            if(deleteQuery("Students", id)){
+                System.out.println("Success Delete: "+id);
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_btnDeleteStudentActionPerformed
+
+    private void btnMakePaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakePaymentActionPerformed
+        
+        try {
+            
+            double payment = Double.valueOf(JOptionPane.showInputDialog(panelPayment, "Enter Payment"));
+            double balance = Double.valueOf(rs.getString("balance")) - payment;
+            ArrayList<String> values = new ArrayList<>();
+            
+            values.add(String.valueOf(balance));
+            values.add(getTimestampt());
+            values.add(edit_txtId.getText());
+            
+            if(updateBalanceQuery("Students", values)){
+                JOptionPane.showConfirmDialog(panelPayment, "Balance Updated");
+            } else {
+                JOptionPane.showMessageDialog(panelPayment, "Unable to Update Payment");
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnMakePaymentActionPerformed
+
+    private void btnCalculateSalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateSalaryActionPerformed
+        try {
+            String desg = rs.getString("desg");
+            double hours = Double.valueOf(rs.getString("hours"));
+            
+            getSettings();
+            double ot = rs.getDouble("ot");
+            double bs = rs.getDouble("bs");
+            double ha = rs.getDouble("ha");
+            double ma = rs.getDouble("ma");
+            double ta = rs.getDouble("ta");
+            
+            double shift = Double.valueOf(JOptionPane.showInputDialog(panelEditTeacher, "Input Hours: "));
+            //shift hours - min hours, * otrate
+            double overtime = (shift-hours) * ot;
+            double salary = bs + overtime;
+            salary = (salary * (1+ha)) + (salary * (1+ma)) + (salary * (1+ta));
+            
+            JOptionPane.showConfirmDialog(panelPayment, "Salary = "+salary);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnCalculateSalaryActionPerformed
     
     /**
      * Catch any Button Navigation
@@ -926,11 +1326,12 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
         this.panelMain.revalidate();
 
         this.btnSaveEditStudent.setEnabled(false);
+        this.btnSaveEditTeacher.setEnabled(false);
         
         clearFields(this.panelEditStudent.getComponents());
         clearFields(this.panelAddStudent.getComponents());
         clearFields(this.panelAddTeacher.getComponents());
-        //clearFields(this.panelEditTeacher.getComponents());
+        clearFields(this.panelEditTeacher.getComponents());
         
         //ADD STUDENTS
         if(e.getSource() == this.btnAddStudent){
@@ -1009,6 +1410,11 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
             }
         }
         
+        //Edit Teacher
+        else if(e.getSource() == btnEditRecordsFaculty){
+            this.panelMain.add(this.panelEditTeacher);
+        }
+        
         this.panelMain.repaint();
         this.panelMain.revalidate();
             
@@ -1029,6 +1435,7 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
             }
         }
     }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1065,10 +1472,16 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JOptionPane Dialog;
     private javax.swing.JButton btnAddFaculty;
     private javax.swing.JButton btnAddStudent;
+    private javax.swing.JButton btnCalculateSalary;
+    private javax.swing.JButton btnComputeSalary;
+    private javax.swing.JButton btnDeleteStudent;
+    private javax.swing.JButton btnDeleteTeacher;
     private javax.swing.JButton btnEditRecordsFaculty;
     private javax.swing.JButton btnEditRecordsStudent;
+    private javax.swing.JButton btnMakePayment;
     private javax.swing.JButton btnPayment;
     private javax.swing.JButton btnSaveEditStudent;
+    private javax.swing.JButton btnSaveEditTeacher;
     private javax.swing.JButton btnSaveStudent;
     private javax.swing.JButton btnSaveTeacher;
     private javax.swing.JButton btnViewFaculty;
@@ -1078,14 +1491,23 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JComboBox<String> cbxDesgTeacher;
     private javax.swing.JComboBox<String> cbxGender;
     private javax.swing.JComboBox<String> cbxGenderTeacher;
+    private javax.swing.JButton edit_btnFillTeacher;
+    private javax.swing.JComboBox<String> edit_cbxDeptTeacher;
+    private javax.swing.JComboBox<String> edit_cbxDesgTeacher;
     private javax.swing.JComboBox<String> edit_cbxGender;
+    private javax.swing.JComboBox<String> edit_cbxGenderTeacher;
     private javax.swing.JSpinner edit_spNew;
     private javax.swing.JSpinner edit_spRepeated;
     private javax.swing.JTextField edit_txtAddress;
+    private javax.swing.JTextField edit_txtAddressTeacher;
     private javax.swing.JTextField edit_txtContact;
+    private javax.swing.JTextField edit_txtContactTeacher;
     private javax.swing.JTextField edit_txtFirstName;
+    private javax.swing.JTextField edit_txtFirstNameTeacher;
     private javax.swing.JTextField edit_txtId;
+    private javax.swing.JTextField edit_txtIdTeacher;
     private javax.swing.JTextField edit_txtLastName;
+    private javax.swing.JTextField edit_txtLastNameTeacher;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -1109,8 +1531,16 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1124,12 +1554,16 @@ public class Menu extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JPanel panelAddStudent;
     private javax.swing.JPanel panelAddTeacher;
     private javax.swing.JPanel panelEditStudent;
+    private javax.swing.JPanel panelEditTeacher;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelNavViewStudents;
     private javax.swing.JPanel panelNavigation;
+    private javax.swing.JPanel panelPayment;
     private javax.swing.JPanel panelViewStudent;
     private javax.swing.JPanel panelViewTeacher;
     private javax.swing.JSeparator separator;

@@ -32,7 +32,7 @@ public class Teacher {
     */
     
     public static boolean validate(){
-        return false;
+        return true;
     }
     
     public static String insertSQL = 
@@ -50,6 +50,21 @@ public class Teacher {
                 +"?,"
                 +"?"
             + ")";
+    
+    public static String updateSQL = 
+            "UPDATE TEACEHRS "
+            + "SET "
+                + "FIRST_NAME=?,"   //1
+                + "LAST_NAME=?,"    //2
+                + "GENDER=?,"       //3
+                + "CONTACT=?,"      //4
+                + "ADDRESS=?,"      //5
+                + "DEPT=?,"      //6
+                + "DESG=?,"   //7
+                + "HOURS=?,"      //8
+                + "CREATED_AT=?,"   //9
+                + "UPDATED_AT=? "   //10
+            + "WHERE ID=?";         //11
 
     public static String getHours(String desg){
         if(desg.equals("Head of Faculty")){
