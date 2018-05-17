@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.Settings;
 import models.Student;
 import models.Teacher;
 
@@ -76,7 +77,7 @@ public class Database {
         try{
             st = conn.createStatement();
             rs = st.executeQuery(sql);
-            if(rs != null) return true;
+            return rs.next();
         } catch(SQLException e){
             System.out.println("Error: "+e.getMessage());
         }
@@ -222,6 +223,28 @@ public class Database {
         return false;
     }
     
+    public static boolean updateSettingsQuery(String table, ArrayList<Double> values){
+        
+        if(conn == null){ conn = getDbConnection(); } 
+        
+        try {
+            pst = conn.prepareStatement(Settings.updateSQL);
+            for(int i = 0; i < values.size(); i++){
+                if(i == 0) pst.setDouble(11, values.get(i));
+                else pst.setDouble(i, values.get(i));
+                System.out.println(i+" = "+values.get(i));
+            }
+            if(pst.executeUpdate() == 1)
+                return true;
+            
+        } catch (SQLException ex) {
+            //Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: "+ex.getMessage()+"\n"+Student.updateSQL);
+        }
+        error_message = "Unable to execute Query: "+Student.updateSQL;
+        return false;
+    }
+    
     public static boolean updateBalanceQuery(String table, ArrayList<String> values){
         
         if(conn == null){ conn = getDbConnection(); } 
@@ -249,14 +272,18 @@ public class Database {
                 + table 
                 + " WHERE id='"+id+"'";
         if(conn == null){ conn = getDbConnection(); } 
-        return pst.execute(sql);
+        pst = conn.prepareStatement(sql);
+        if(pst.executeUpdate() == 1)
+            return true;
+        return false;
     }
      
     
     public static void getSettings() throws SQLException{
         if(conn == null){ conn = getDbConnection(); } 
         pst = conn.prepareStatement("SELECT * FROM Settings");
-        if(pst.execute()){
+        rs = pst.executeQuery();
+        if(rs != null){
             rs.next();
         } else {
             throw new SQLException("Can't Execute SQL Statement");

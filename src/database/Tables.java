@@ -20,12 +20,13 @@ public class Tables extends Database{
     }
     
     public void createTables(){
-//        now = getTimestampt();
-//        create_students_table();
-//        now = getTimestampt();
-//        create_users_table();
-//        now = getTimestampt();
-//        create_teachers_table();
+        now = getTimestampt();
+        create_students_table();
+        now = getTimestampt();
+        create_users_table();
+        now = getTimestampt();
+        create_teachers_table();
+        //
         create_settings_table();
     }
     //

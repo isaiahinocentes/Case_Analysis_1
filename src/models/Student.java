@@ -69,18 +69,17 @@ public class Student extends Database{
         id++;
         
         String values = "("
-            + ""+(pre+id)+","
+            + "'"+(pre+id)+"',"
             + "'"+first_name+"',"
             + "'"+last_name+"',"
             + "'"+gender+"',"
             + "'"+contact+"',"
             + "'"+address+"',"
-            + ""+num_new+","
-            + ""+num_repeat+","
-            + ""+balance+","
+            + "'"+num_new+"',"
+            + "'"+num_repeat+"',"
+            + "'"+balance+"',"
             + "'"+getTimestampt()+"',"
-            + "' ',"
-            + "' '"
+            + "''"
             + ")";
         
         return insertQuery("Students", values);

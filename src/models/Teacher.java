@@ -52,7 +52,7 @@ public class Teacher {
             + ")";
     
     public static String updateSQL = 
-            "UPDATE TEACEHRS "
+            "UPDATE TEACHERS "
             + "SET "
                 + "FIRST_NAME=?,"   //1
                 + "LAST_NAME=?,"    //2

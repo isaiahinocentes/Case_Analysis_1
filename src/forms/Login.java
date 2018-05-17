@@ -106,8 +106,7 @@ public class Login extends javax.swing.JFrame {
                 }
             });
         } else {
-            JOptionPane dialog = new JOptionPane("Invalid Login!", JOptionPane.ERROR_MESSAGE);
-            dialog.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Wrong username/password");
         }
     }//GEN-LAST:event_loginActionPerformed
 
